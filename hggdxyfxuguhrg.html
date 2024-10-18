@@ -1,0 +1,50 @@
+<!doctype html>
+<html> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <script>
+    // JavaScript to change the image dynamically on page load
+    function changeImage() {
+      // Array of image URLs
+      var images = [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJDeh8HhoCVzJVjBRBMdFMNfaNyLQVBv2BHKssgxp3w&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLD5nnwiIVghAnUvEfMyQegTTpjb9-QuHpMg&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo8VWBhGOGcudUKK6WoWWd2dRMK7FbEIvgag&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3askzyPOfZTaewh2q8dcEuSdSHWvRJLruzA&usqp=CAU'
+      ];
+
+      // Select a random image
+      var randomImage = images[Math.floor(Math.random() * images.length)];
+
+      // Set the random image as the src of the img element
+      document.getElementById('heroImage').src = randomImage;
+    }
+
+    // Call changeImage when the page loads
+    window.onload = changeImage;
+  </script> 
+ </head> 
+ <body class="bg-gradient-to-b from-white via-gray-200 to-white"> 
+  <header class="text-gray-600 body-font"> 
+   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"> <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBzDQnJKZ2-wdgNPz_6Kx_hff_Q_KI_s3G0w&amp;s" alt="E-Shikshak Logo" class="w-10 h-10 text-white p-2 rounded-full"> <span class="ml-3 text-xl">E-Shikshak</span> </a> 
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"> <a class="mr-5 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-110">HOME</a> <a class="mr-5 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-110">ABOUT</a> <a class="mr-5 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-110">COURSE</a> <a class="mr-5 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-110">QUIZ</a> 
+    </nav> <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 hover:shadow-lg hover:scale-105 transition-transform duration-300 rounded text-base mt-4 md:mt-0">Button 
+     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewbox="0 0 24 24"> <path d="M5 12h14M12 5l7 7-7 7"></path> 
+     </svg> </button> 
+   </div> 
+  </header> <!-- Hero Section --> 
+  <section class="text-gray-600 body-font"> 
+   <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col"> <!-- Dynamic Hero Image --> 
+    <img id="heroImage" class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded shadow-lg transform transition duration-500 hover:scale-105" alt="hero"> 
+    <div class="text-center lg:w-2/3 w-full"> 
+     <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Code Your Dream Into Reality</h1> 
+     <p>Choose Your Enter Option</p> 
+     <div class="flex justify-center"> <!-- Guest Button --> <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 hover:shadow-lg hover:scale-105 transition-transform duration-300 rounded text-lg">Guest</button> <!-- Sign In / Sign Up Button --> <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 hover:shadow-lg hover:scale-105 transition-transform duration-300 rounded text-lg">Sign In / Sign Up</button> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+ 
+</body></html>
