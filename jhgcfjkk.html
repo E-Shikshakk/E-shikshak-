@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Introduction with Advanced AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+<style type="text/css" id="dcoder_stylesheet">/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+}
+
+h1, h2 {
+    font-weight: 300;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.video-section {
+    flex: 3;
+    margin-right: 20px;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ai-assistant {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+}
+
+#user-input {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .video-section, .ai-assistant {
+        margin-bottom: 20px;
+    }
+}</style></head>
+<body>
+    <header>
+        <h1>Learn HTML with AI Assistance</h1>
+    </header>
+
+    <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>HTML Introduction</h2>
+            <video controls>
+                <source src="your-video-url.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- AI Assistant Section -->
+        <div class="ai-assistant">
+            <h2>AI Assistant</h2>
+            <div id="chat-box">
+                <p><strong>AI:</strong> Hello! How can I assist you today?</p>
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ask me anything...">
+                <button onclick="getAnswer()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 E-Shikshak. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+<script type="text/javascript" id="dcoder_script">// Context object to track ongoing conversation
+let context = {
+    lastTopic: null,
+    lastQuestion: null
+};
+
+// Function to process user input and generate a response
+function getAnswer() {
+    const userInput = document.getElementById('user-input').value.toLowerCase();
+    const chatBox = document.getElementById('chat-box');
+
+    // Display user question in chat
+    const userMessage = `<p><strong>You:</strong> ${userInput}</p>`;
+    chatBox.innerHTML += userMessage;
+
+    // Generate and display AI response
+    const aiMessage = `<p><strong>AI:</strong> ${generateAIResponse(userInput)}</p>`;
+    chatBox.innerHTML += aiMessage;
+
+    // Clear input field
+    document.getElementById('user-input').value = '';
+
+    // Auto-scroll chatbox to the bottom
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Function to generate AI response based on user input
+function generateAIResponse(userInput) {
+    let response = '';
+
+    // Look for questions or statements
+    if (isQuestion(userInput)) {
+        response = handleQuestion(userInput);
+    } else {
+        response = handleStatement(userInput);
+    }
+
+    // Return response or fallback
+    return response || "I'm sorry, I didn't quite understand that. Could you clarify?";
+}
+
+// Function to determine if input is a question
+function isQuestion(input) {
+    return input.includes('?') || input.startsWith('what') || input.startsWith('how') || input.startsWith('why');
+}
+
+// Function to handle questions
+function handleQuestion(input) {
+    context.lastQuestion = input;
+
+    if (input.includes('html')) {
+        context.lastTopic = 'html';
+        return 'HTML stands for HyperText Markup Language, used to structure web pages.';
+    } else if (input.includes('css')) {
+        context.lastTopic = 'css';
+        return 'CSS is used for styling HTML elements on a webpage.';
+    } else if (input.includes('javascript')) {
+        context.lastTopic = 'javascript';
+        return 'JavaScript is a programming language that allows you to add interactivity to your web pages.';
+    } else if (input.match(/what is a (div|span|header)/)) {
+        return `A ${input.match(/what is a (div|span|header)/)[1]} is an HTML tag used to structure the content of a webpage.`;
+    } else if (input.match(/what is a function/)) {
+        return 'A function in JavaScript is a reusable block of code designed to perform a specific task.';
+    } else if (input.includes('loop')) {
+        return 'A loop allows you to repeatedly run a block of code until a condition is met.';
+    } else if (input.includes('variable')) {
+        return 'A variable in JavaScript is used to store data. You can declare variables using var, let, or const.';
+    }
+
+    return "That's an interesting question! Could you provide more details?";
+}
+
+// Function to handle general statements or declarations
+function handleStatement(input) {
+    if (context.lastQuestion && input.includes('yes')) {
+        return "Great! Let me know if you have any further questions.";
+    } else if (input.includes('thanks')) {
+        return 'You’re welcome! I’m happy to help.';
+    } else if (input.includes('goodbye')) {
+        return 'Goodbye! Feel free to ask more questions anytime.';
+    }
+
+    // Continue conversations
+    if (context.lastTopic === 'html') {
+        return 'Would you like to learn about CSS next?';
+    } else if (context.lastTopic === 'javascript') {
+        return 'Would you like to know how JavaScript interacts with HTML and CSS?';
+    }
+
+    return "I see. Is there anything else you'd like to discuss?";
+}
+
+// Regex pattern example to detect keywords
+function matchKeyword(input, keyword) {
+    const pattern = new RegExp(`\\b${keyword}\\b`, 'i');
+    return pattern.test(input);
+}</script></body></html>
